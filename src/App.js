@@ -8,6 +8,8 @@ import './App.css';
 const Expertise = lazy(() => import('./component/Expertise') )
 const Testimonial = lazy( () => import ('./component/Testimonial') )
 const Portfolio = lazy( () => import ('./component/Portfolio'))
+const ReferenceInput = lazy( () => import('./component/ReferenceInput') )
+const ErrorBoundary = lazy( () => import('./ErrorBoundary') )
 
 function App() {
 
@@ -22,14 +24,19 @@ let testimonials = [
 ];
   return (
     <div className="App">
-      <header className="App-header">
-         <Suspense fallback = {<div> Loading ... </div>} >
-            Daily React
-            <Expertise expertise = {expertise}/>
-            <Testimonial testimonials = {testimonials}/>
-            <Portfolio/>
-          </Suspense>
-      </header>
+ 
+          <Suspense fallback = {<div> Loading ... </div>} >
+             <ErrorBoundary>
+              <header className="App-header">
+        
+              Daily React
+              <ReferenceInput />
+              <Expertise expertise = {expertise}/>
+              <Testimonial testimonials = {testimonials}/>
+              <Portfolio/>
+            </header>
+            </ErrorBoundary>
+            </Suspense>
     </div>
   );
 }
