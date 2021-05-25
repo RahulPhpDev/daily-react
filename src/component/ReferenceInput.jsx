@@ -7,14 +7,21 @@ const  ReferenceInput = () => {
 
     useEffect( () => {
         inputReference.current.focus() ;
+        console.log(inputReference.current.length)
+
     }, [])
     
     const submitClick = () => {
      //put your logic and reset the value of input type
-        inputReference.current.value = '';
+        // inputReference.current.value = '';
     }
     return (
         <div>
+
+            <input className="text-black" 
+             type = "text"
+             ref = {inputReference} 
+            />
 
             <input className="text-black" 
              type = "text"
